@@ -1,0 +1,35 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Gestion Utilisateur{% endblock %}
+
+{% block pageTitle %}Gestion des Utilisateurs{% endblock %}
+
+{% block body %}
+    <div style="text-align: center; margin-bottom: 10px;">
+        <a href="{{ path('app_create_utilisateur') }}" class="btn btn-success">
+        <i class="fas fa-plus"></i>
+        </a>
+    </div>
+    <table style="border-collapse: collapse; width: 50%; text-align: center;">
+        <tr>
+            <th style="border: 1px solid black;">Nom d'utilisateur</th>
+            <th style="border: 1px solid black;">Action</th>
+            <th style="border: 1px solid black;">Supprimer</th>
+        </tr>
+        {% for user in usernames %}
+            <tr>
+                <td style="border: 1px solid black;">{{ user.username }}</td>
+                <td style="border: 1px solid black;">
+                    <a href="{{ path('app_update_utilisateur', { 'username': user.username, 'id': user.id }) }}" class="btn btn-primary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td style="border: 1px solid black;">
+                    <a href="{{ path('app_delete_utilisateur', { 'id': user.id }) }}" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Index Exercice{% endblock %}
+
+
+{% block pageTitle %}Exercice{% endblock %}
+
+
+{% block body %}
+    <div style="text-align: center; margin-bottom: 10px;">
+        <a href="{{ path('app_add_exercice') }}" class="btn btn-success">
+        <i class="fas fa-plus"></i>
+        </a>
+    </div>
+    <table style="border-collapse: collapse; width: 50%; text-align: center;">
+        <tr>
+            <th style="border: 1px solid black;">Nom</th>
+            <th style="border: 1px solid black;">Action</th>
+            <th style="border: 1px solid black;">Supprimer</th>
+        </tr>
+        {% for exercice in exercices %}
+            <tr>
+                <td style="border: 1px solid black;">{{ exercice.name }}</td>
+                <td style="border: 1px solid black;">
+                    <a href="{{ path('app_update_exercice', {'id': exercice.id }) }}" class="btn btn-primary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td style="border: 1px solid black;">
+                    <a href="{{ path('app_delete_exercice', {'id': exercice.id }) }}" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
